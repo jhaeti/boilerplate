@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.7"
 
 # Volulme for storing mongo data and making it persistent
 volumes:
@@ -13,7 +13,7 @@ services:
             - "27017:27017"
             - "27018:27017"
         volumes:
-            - "mongo_data:/data/db"
+            - "./docker/mongo_data:/data/db"
     frontend:
         # container_name: frontend
         build: frontend
@@ -31,13 +31,29 @@ services:
 
         depends_on:
             - mongo
+    # server:
+    #     # container_name: server
+    #     image: nginx
+    #     ports:
+    #         - "80:80"
+    #     volumes:
+    #         - "./nginx/nginx-raw.conf:/etc/nginx/conf.d/default.conf"
+    #     depends_on:
+    #         - frontend
+    #         - backend
     server:
         # container_name: server
-        image: nginx:1.21.0-alpine
+        image: andreilhicas/nginx-letsencrypt
+        environment:
+            - DOMAIN=boilerplate.ddns.net
+            - EMAIL=jhaecoding2@gmail.com
         ports:
             - "80:80"
+            - "443:443"
+            - "4000:4000"
         volumes:
             - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
+            - "./docker/certs:/etc/letsencrypt"
         depends_on:
             - frontend
             - backend
