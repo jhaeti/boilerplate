@@ -6,7 +6,7 @@ const auth = require("./middleware/auth");
 const router = express.Router();
 
 // Gets all Items and spit in json all the items
-router.get("/api/items", auth, async (req, res) => {
+router.get("/items", auth, async (req, res) => {
     try {
         await req.user.populate("items").execPopulate();
         const items = req.user.items;
@@ -17,7 +17,7 @@ router.get("/api/items", auth, async (req, res) => {
 });
 
 // Post an item to api/items
-router.post("/api/items", auth, async (req, res) => {
+router.post("/items", auth, async (req, res) => {
     const { name } = req.body;
     const newUser = new Item({ name, owner: req.user._id });
 
@@ -30,7 +30,7 @@ router.post("/api/items", auth, async (req, res) => {
 });
 
 // Deleting an Item
-router.delete("/api/items/:id", auth, async (req, res) => {
+router.delete("/items/:id", auth, async (req, res) => {
     const { id } = req.params;
     try {
         const item = await Item.findOneAndDelete({
