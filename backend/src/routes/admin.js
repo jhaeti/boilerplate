@@ -26,6 +26,8 @@ router.get("/admin/items", auth, adminAuth, async (req, res) => {
     }
 });
 
+// Deletes any items by the id
+// User does not exist
 router.delete("/admin/items/:id", auth, adminAuth, async (req, res) => {
     try {
         const id = req.params;
@@ -36,6 +38,8 @@ router.delete("/admin/items/:id", auth, adminAuth, async (req, res) => {
     }
 });
 
+// Delete any user by their id
+// This is only accessible only by admins
 router.delete("/admin/users/:id", auth, adminAuth, async (req, res) => {
     try {
         const id = req.params;

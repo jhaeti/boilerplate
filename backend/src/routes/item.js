@@ -5,7 +5,7 @@ const auth = require("./middleware/auth");
 
 const router = express.Router();
 
-// Gets all Items and spit in json all the items
+// Gets all Items and sends it in json
 router.get("/items", auth, async (req, res) => {
     try {
         await req.user.populate("items").execPopulate();
@@ -16,7 +16,7 @@ router.get("/items", auth, async (req, res) => {
     }
 });
 
-// Post an item to api/items
+// Post an item to /items
 router.post("/items", auth, async (req, res) => {
     const { name } = req.body;
     const newUser = new Item({ name, owner: req.user._id });

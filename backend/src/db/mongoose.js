@@ -19,6 +19,8 @@ mongoose.connect(
     () => console.log("MongoDb connected...")
 );
 
+
+// Creating an a default admin for the database
 const {
     DEFAULT_ADMIN_NAME: name,
     DEFAULT_ADMIN_EMAIL: email,
@@ -34,7 +36,10 @@ User.findOne({ email })
         }
     })
     .then(async (users) => {
+        // Check for the existence of data
+        // Proceed if there is not document in the User collection
         if (users && users.length === 0) {
+            // Save the default user if the database is new with no data stored in it
             await defaultAdminUser.save();
         }
     })
