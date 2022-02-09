@@ -12,15 +12,16 @@ const uri =
 mongoose.connect(
     uri,
     {
+        user: "root",
+        pass: "jhae",
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
     },
-    () => console.log("MongoDb connected...")
-);
-
-
-// Creating an a default admin for the database
+    
+).then(() => {
+    console.log("Mongodb Connected...")
+    // Creating an a default admin for the database
 const {
     DEFAULT_ADMIN_NAME: name,
     DEFAULT_ADMIN_EMAIL: email,
@@ -44,3 +45,7 @@ User.findOne({ email })
         }
     })
     .catch((e) => console.log(e));
+    console.log("Admin is Present...")}).catch(()=> console.log("Not connected to mongodb"))
+
+
+
