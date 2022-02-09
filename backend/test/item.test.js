@@ -29,6 +29,14 @@ beforeEach(async () => {
     await new Item(itemTwo).save();
 });
 
+ afterAll((done) => {
+    // Closing the DB connection allows Jest to exit successfully.
+
+    mongoose.connection.close();
+    done();
+});
+
+
 test("Not logged in users should not be able to access items", async () => {
     let response = await request(app).get("/api/items");
     response = JSON.stringify(response);
