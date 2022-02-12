@@ -1,4 +1,4 @@
-name: Node.js CI
+name: FRONTEND CI / CD
 
 on:
     push:
