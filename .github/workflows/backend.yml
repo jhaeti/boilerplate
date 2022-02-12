@@ -27,8 +27,8 @@ jobs:
               uses: actions/setup-node@v2
               with:
                 node-version: ${{ matrix.node-version }}
-                cache: 'npm'
-                cache-dependency-path: backend/package-lock.json
+#                 cache: 'npm'
+#                 cache-dependency-path: backend/package-lock.json
             - name: Start MongoDB
               uses: supercharge/mongodb-github-action@1.7.0
             - run: npm ci
