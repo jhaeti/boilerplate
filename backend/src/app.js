@@ -6,8 +6,8 @@ require("dotenv").config();
 require("./db/mongoose");
 
 const adminRouter = require("./routes/admin");
-const itemRouter = require("./routes/item");
 const userRouter = require("./routes/user");
+const itemRouter = require("./routes/item");
 
 const app = express();
 

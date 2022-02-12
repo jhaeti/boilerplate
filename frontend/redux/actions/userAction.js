@@ -38,7 +38,7 @@ export const setMsg = (msg) => {
     return { type: SET_MSG, payload: msg };
 };
 
-// Attempt to logout a user
+// Logout a user
 export const logout = () => (dispatch) => {
     axios
         .get(`${apiUrl}/users/logout`, {
