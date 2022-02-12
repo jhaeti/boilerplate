@@ -19,7 +19,7 @@ class Index extends Component {
     render() {
         return (
             <Layout
-                title="Full-Stack Nextjs Boilerplate"
+                title="Boilerplate"
                 description="Homepage for the Boilerplate"
             >
                 <AddItem />
