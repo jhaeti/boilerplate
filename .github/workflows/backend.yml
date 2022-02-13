@@ -27,7 +27,7 @@ jobs:
             - name: set environment variables
               uses: allenevans/set-env@v2.0.0
               with:
-                MONGO_TEST_URI: mongodb://mongodb:27017/Boilerplate
+                MONGO_TEST_URI: mongodb://localhost:27017/Boilerplate
                 JWT_SECRET_KEY: next-boiler-plate-secret-keys-for-dev
                 AUTH_COOKIE_NAME: x-auth-tokensss
                 PORT: 5000
