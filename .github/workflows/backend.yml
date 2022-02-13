@@ -22,7 +22,8 @@ jobs:
                 mongodb-version: ['4.2']
 
         steps:
-            - uses: actions/checkout@v2
+            - name: Git checkout
+              uses: actions/checkout@v2
             
             - name: set environment variables
               uses: allenevans/set-env@v2.0.0
@@ -34,23 +35,21 @@ jobs:
                 DEFAULT_ADMIN_NAME: Jhae
                 DEFAULT_ADMIN_EMAIL: jhaeadmin@example.com
                 DEFAULT_ADMIN_PASSWORD: jhae@exampleadmin.admin
-                
-            
-                
+
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
               with:
                 node-version: ${{ matrix.node-version }}
-                cache: 'npm'
-                cache-dependency-path: backend/package-lock.json
+
             - name: Start MongoDB
               uses: supercharge/mongodb-github-action@1.7.0
               with:
                 mongodb-version: ${{ matrix.mongodb-version }}
-                
+
             - run: npm ci
             - run: npm run test:staging
-            
+              env:
+                CI: true
             
     Storing-previous-image-with-new-tag:
         needs: Test
