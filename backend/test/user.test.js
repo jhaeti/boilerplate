@@ -118,7 +118,7 @@ test("Should not login user if password does not match", async () => {
 });
 
 test("Should fetch user data if cookie is set correctly", async () => {
-    const response1 = request(app)
+    const response1 = await request(app)
         .get("/users/me")
         .set(
             "Cookie",
