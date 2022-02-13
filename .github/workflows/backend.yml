@@ -19,6 +19,7 @@ jobs:
             matrix:
                 node-version: [16.x]
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+                mongodb-version: ['4.2']
 
         steps:
             - name: Git checkout
@@ -27,7 +28,7 @@ jobs:
             - name: set environment variables
               uses: allenevans/set-env@v2.0.0
               with:
-                MONGO_TEST_URI: mongodb://root:jhae@boilerplate.ddns.net:27017/Boilerplate-test?authSource=admin&readPreference=primary&appname=Backend&directConnection=true&ssl=false
+                MONGO_TEST_URI: mongodb://localhost:27017/Boilerplate-test
                 JWT_SECRET_KEY: next-boiler-plate-secret-keys-for-dev
                 AUTH_COOKIE_NAME: x-auth-tokensss
                 PORT: 5000
@@ -35,14 +36,17 @@ jobs:
                 DEFAULT_ADMIN_EMAIL: jhaeadmin@example.com
                 DEFAULT_ADMIN_PASSWORD: jhae@exampleadmin.admin
 
+            - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
               with:
                 node-version: ${{ matrix.node-version }}
+                cache: 'npm'
+                cache-dependency-path: backend/package-lock.json
+            - name: Start MongoDB
+              uses: supercharge/mongodb-github-action@1.7.0
             - run: npm ci
             - run: npm run test:staging
-              env:
-                CI: true
             
     Storing-previous-image-with-new-tag:
         needs: Test
