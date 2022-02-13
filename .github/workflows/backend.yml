@@ -33,15 +33,17 @@ jobs:
                 DEFAULT_ADMIN_NAME: Jhae
                 DEFAULT_ADMIN_EMAIL: jhaeadmin@example.com
                 DEFAULT_ADMIN_PASSWORD: jhae@exampleadmin.admin
-
+            - name: Start MongoDB
+              uses: supercharge/mongodb-github-action@1.7.0
+              with:
+                mongodb-version: ${{ matrix.mongodb-version }}
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
               with:
                 node-version: ${{ matrix.node-version }}
                 cache: 'npm'
                 cache-dependency-path: backend/package-lock.json
-            - name: Start MongoDB
-              uses: supercharge/mongodb-github-action@1.7.0
+
             - run: npm ci
             - run: npm run test:staging
             
