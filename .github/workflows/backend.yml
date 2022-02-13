@@ -36,9 +36,9 @@ jobs:
                 DEFAULT_ADMIN_PASSWORD: jhae@exampleadmin.admin
                 
             - name: Start MongoDB
-              uses: supercharge/mongodb-github-action@1.7.0
+              uses: wbari/start-mongoDB@v0.2
               with:
-                mongodb-version: ${{ matrix.mongodb-version }}
+                mongoDBVersion: ${{ matrix.mongodb-version }}
                 
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
