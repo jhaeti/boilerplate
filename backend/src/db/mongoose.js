@@ -7,6 +7,7 @@ const uri =
         : process.env.NODE_ENV === "test"
         ? process.env.MONGO_TEST_URI
         : process.env.MONGO_DEV_URI;
+console.log(uri);
 
 // Connect to mongoDB
 mongoose
