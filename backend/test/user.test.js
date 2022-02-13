@@ -28,6 +28,13 @@ beforeEach(async () => {
     await new User(userTwo).save();
 });
 
+afterAll((done) => {
+    // Closing the DB connection allows Jest to exit successfully.
+
+    mongoose.connection.close();
+    done();
+});
+
 test("Should not register a user if all fields are not provided", async () => {
     const response1 = await request(app)
         .post("/users/register")
