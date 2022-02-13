@@ -29,16 +29,15 @@ beforeEach(async () => {
     await new Item(itemTwo).save();
 });
 
- afterAll((done) => {
+afterAll((done) => {
     // Closing the DB connection allows Jest to exit successfully.
 
     mongoose.connection.close();
     done();
 });
 
-
 test("Not logged in users should not be able to access items", async () => {
-    let response = await request(app).get("/api/items");
+    let response = await request(app).get("/items");
     response = JSON.stringify(response);
     response = JSON.parse(response);
     expect(response.status).toBe(401);
@@ -46,7 +45,7 @@ test("Not logged in users should not be able to access items", async () => {
 
 test("Should get 2 items", async () => {
     const response = await request(app)
-        .get("/api/items")
+        .get("/items")
         .set(
             "Cookie",
             `${process.env.AUTH_COOKIE_NAME}=${userOne.tokens[0].token}`

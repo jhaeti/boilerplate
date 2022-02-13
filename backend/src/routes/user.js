@@ -53,7 +53,7 @@ router.post("/users/login", async (req, res) => {
 
         res.json({ token, user });
     } catch (e) {
-        res.status(400).json(e.message);
+        res.status(404).json(e.message);
     }
 });
 

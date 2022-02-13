@@ -96,11 +96,11 @@ test("Should not login user", async () => {
             email: "168896@example.com",
             password: userOne.password,
         })
-        .expect(400);
+        .expect(404);
 });
 
 test("Should not login user if password does not match", async () => {
-    let res = await request(app).post("/res/login").send({
+    let res = await request(app).post("/users/login").send({
         email: userOne.email,
         password: "ibrahim1223",
     });

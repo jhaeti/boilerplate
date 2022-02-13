@@ -12,8 +12,6 @@ console.log(uri);
 // Connect to mongoDB
 mongoose
     .connect(uri, {
-        user: "root",
-        pass: "jhae",
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
