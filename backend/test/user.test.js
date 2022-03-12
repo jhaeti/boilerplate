@@ -57,7 +57,7 @@ test("Should fail to register a user if the user already exist", async () => {
         .send(userOne)
         .expect(400);
     expect(response1.body).not.toBeNull();
-    expect(response1.body).toBe("User already exist");
+    expect(response1.body).toBe("Email is taken. Use another email.");
 });
 
 test("Should register a new User", async () => {
