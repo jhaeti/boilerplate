@@ -6,7 +6,10 @@ export const IS_LOADING = "IS_LOADING";
 export const ADD_ITEM = "ADD_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
 
-const apiUrl = process.env.API_URL;
+const apiUrl =
+    process.env.NODE_ENV === "production"
+        ? process.env.API_URL
+        : process.env.API_DEV_URL;
 
 // Get all items in database
 export const getItems = () => (dispatch) => {

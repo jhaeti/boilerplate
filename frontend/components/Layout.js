@@ -28,7 +28,6 @@ export const Layout = ({ children, title, description }) => {
                 <Alert />
                 {children}
             </div>
-
             <Footer />
         </div>
     );

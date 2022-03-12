@@ -19,7 +19,7 @@ router.post("/users/register", async (req, res) => {
         //   Check whether user already exist
         const previousUser = await User.findOne({ email });
         if (previousUser) {
-            return res.status(400).json("User already exist");
+            return res.status(400).json("Email is taken. Use another email.");
         }
 
         // Create new User if user does not exist

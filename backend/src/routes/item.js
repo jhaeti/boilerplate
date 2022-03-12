@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/items", auth, async (req, res) => {
     try {
         await req.user.populate("items").execPopulate();
-        const items = req.user.items;
+        const items = req.user.items.reverse();
         res.json(items);
     } catch (e) {
         console.log(e);
