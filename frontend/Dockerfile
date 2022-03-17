@@ -7,9 +7,10 @@ COPY package*.json ./
 ENV NODE_ENV=production
 
 RUN npm install
+RUN ls -a
 
 COPY .next ./
-COPY public public
+COPY public ./
 
 RUN npm run build
 
