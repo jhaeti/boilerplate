@@ -15,7 +15,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
                 <div className="nav__box">
                     <div className="nav__branding">
                         <Link href="/">
-                            <a className="nav__logo">LOGO3</a>
+                            <a className="nav__logo">LOGO</a>
                         </Link>
                     </div>
                     <ul className="nav__list">
