@@ -13,7 +13,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-            - name: Set up QEMU
+              name: Set up QEMU
               uses: docker/setup-qemu-action@v1
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v1
@@ -41,9 +41,8 @@ jobs:
                 node-version: [16.x] # Using node version 16
         steps:
             - name: Checkout
-            - uses: actions/checkout@v2
+              uses: actions/checkout@v2
 
-            - name: Building image from source code
             - run: npm ci # Install dependencies
             - run: npm run build # Build from source code
               env:
@@ -91,7 +90,8 @@ jobs:
         needs: Build-and-push-image
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v2
             - name: multiple command
               uses: appleboy/ssh-action@master
               env:
@@ -110,7 +110,8 @@ jobs:
         needs: Deploy-To-SERVER
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v2
             - name: Removing All dangling images and containers after updating the images to latest
               uses: appleboy/ssh-action@master
               with:
