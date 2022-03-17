@@ -72,7 +72,7 @@ jobs:
               with:
                   name: build
                   path: frontend
-            - run: ls -a -R
+            - run: ls frontend -a -R
 
             # - name: Set up QEMU
             #   uses: docker/setup-qemu-action@v1
