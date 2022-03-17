@@ -27,8 +27,10 @@ jobs:
             - name: Upload Next build # Upload the artifact
               uses: actions/upload-artifact@v2
               with:
-                  name: frontend
-                  path: frontend
+                  name: build
+                  path: |
+                      frontend/.next
+                      frontend/public
                   retention-days: 7 # Days for artifact to be retained
 
     # Storing-previous-image-with-new-tag:
@@ -59,7 +61,7 @@ jobs:
     #               docker push ${{secrets.FRONTEND_DOCKER_IMAGE}}:${{ steps.vars.outputs.sha_short }}
 
     Build-and-push-image:
-        needs: Next-build # Forcing code below to run only when Next-build job above is successful
+        # needs: Next-build # Forcing code below to run only when Next-build job above is successful
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -68,7 +70,8 @@ jobs:
             - name: Download next build # Download the above uploaded artifact
               uses: actions/download-artifact@v2
               with:
-                  name: frontend
+                  name: build
+                  path: frontend
             - run: ls -a -R
 
             # - name: Set up QEMU
