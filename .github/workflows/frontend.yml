@@ -71,6 +71,7 @@ jobs:
               uses: actions/download-artifact@v2
               with:
                   name: build
+                  path: frontend
             - run: ls -a -R
 
             - name: Set up QEMU
