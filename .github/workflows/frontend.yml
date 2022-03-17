@@ -3,8 +3,8 @@ name: FRONTEND CI / CD
 on:
     push:
         branches: [main]
-        #paths:
-         #   - "frontend/**"
+        paths:
+            - "frontend/**"
     workflow_dispatch:
 
 jobs:

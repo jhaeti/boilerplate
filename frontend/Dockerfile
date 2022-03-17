@@ -6,12 +6,10 @@ COPY package*.json ./
 
 ENV NODE_ENV=production
 
-USER node
-
 RUN npm install
 
-COPY --chown=node:node .next .next
-COPY --chown=node:node public public
+COPY .next .next
+COPY public public
 
 RUN npm run build
 
