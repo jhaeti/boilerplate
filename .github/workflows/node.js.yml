@@ -1,0 +1,32 @@
+name: FRONTEND CI
+
+on:
+    push:
+        branches: [main]
+#         paths:
+#             - "frontend/**"
+    workflow_dispatch:
+    
+jobs:
+    Next-build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x] # Using node version 16
+        steps:
+            - name: Checkout
+            - uses: actions/checkout@v2
+
+            - name: Building image from source code
+            - run: npm ci # Install dependencies
+            - run: npm run build # Build from source code
+              env:
+                  NEXT_PUBLIC_API_URL: ${secrets.NEXT_PUBLIC_API_URL}
+            - name: Upload Next build # Upload the artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: build
+                  path: |
+                      .next
+                      public
+                  retention-days: 7 # Days for artifact to be retained
