@@ -6,13 +6,15 @@ COPY package*.json ./
 
 ENV NODE_ENV=production
 
+USER node
+
 RUN npm install
 
-COPY . .
-
+COPY --chown=node:node .next .next
+COPY --chown=node:node public public
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD npm run start
+CMD npm start
