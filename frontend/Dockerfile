@@ -11,8 +11,6 @@ RUN npm install
 COPY .next ./
 COPY public ./
 
-RUN npm run build
-
 EXPOSE 3000
 
 CMD npm run start
