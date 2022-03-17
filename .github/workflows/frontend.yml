@@ -62,7 +62,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-            - uses: actions/checkout@v2
+              uses: actions/checkout@v2
 
             - name: Download next build # Download the above uploaded artifact
               uses: actions/download-artifact@v2
@@ -106,7 +106,7 @@ jobs:
                       cd app
                       docker-compose pull
                       docker stack deploy -c docker-compose.yml appv1
-    CLEANING-CONTAINERS-AND-IMAGES-ON-SERVER:
+    Cleaning-containes-and-dangling-images:
         needs: Deploy-To-SERVER
         runs-on: ubuntu-latest
         steps:
