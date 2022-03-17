@@ -58,7 +58,7 @@ jobs:
                   retention-days: 7 # Days for artifact to be retained
 
     Build-and-push-image:
-        needs: Next-build # Forcing code below to run only when Next-build job above succeed
+        needs: Next-build # Forcing code below to run only when Next-build job above is successful
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
