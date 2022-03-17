@@ -3,8 +3,8 @@ name: FRONTEND CI / CD
 on:
     push:
         branches: [main]
-        paths:
-            - "frontend/**"
+        #paths:
+         #   - "frontend/**"
     workflow_dispatch:
 
 jobs:
@@ -29,8 +29,8 @@ jobs:
               with:
                   name: build
                   path: |
-                      .next
-                      public
+                      frontend/.next
+                      frontend/public
                   retention-days: 7 # Days for artifact to be retained
 
     Storing-previous-image-with-new-tag:
