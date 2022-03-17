@@ -61,7 +61,7 @@ jobs:
     #               docker push ${{secrets.FRONTEND_DOCKER_IMAGE}}:${{ steps.vars.outputs.sha_short }}
 
     Build-and-push-image:
-        # needs: Next-build # Forcing code below to run only when Next-build job above is successful
+        needs: Next-build # Forcing code below to run only when Next-build job above is successful
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
