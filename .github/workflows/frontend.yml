@@ -23,7 +23,7 @@ jobs:
             - run: npm ci # Install dependencies
             - run: npm run build # Build from source code
               env:
-                  NEXT_PUBLIC_API_URL: ${secrets.NEXT_PUBLIC_API_URL}
+                  NEXT_PUBLIC_API_URL: ${{secrets.NEXT_PUBLIC_API_URL}}
             - name: Upload Next build # Upload the artifact
               uses: actions/upload-artifact@v2
               with:
