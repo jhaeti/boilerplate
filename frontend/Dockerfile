@@ -7,13 +7,12 @@ COPY package*.json ./
 ENV NODE_ENV=production
 
 RUN npm install
-RUN ls -a
 
-COPY .next .
-COPY public .
+COPY ../.next ./
+COPY ../public ./
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD npm start
+CMD npm run start
