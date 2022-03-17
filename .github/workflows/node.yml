@@ -17,8 +17,9 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Building image from source code
-            - run: npm ci # Install dependencies
-            - run: npm run build # Build from source code
+            - run: |
+                npm ci # Install dependencies
+                npm run build # Build from source code
               env:
                   NEXT_PUBLIC_API_URL: ${secrets.NEXT_PUBLIC_API_URL}
             - name: Upload Next build # Upload the artifact
