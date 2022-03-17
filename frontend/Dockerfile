@@ -8,8 +8,8 @@ ENV NODE_ENV=production
 
 RUN npm install
 
-COPY .next ./
-COPY public ./
+COPY .next .next
+COPY public public
 
 EXPOSE 3000
 
