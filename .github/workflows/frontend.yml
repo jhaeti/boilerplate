@@ -27,11 +27,9 @@ jobs:
     #         - name: Upload Next build # Upload the artifact
     #           uses: actions/upload-artifact@v2
     #           with:
-    #               name: build
-    #               path: |
-    #                   frontend/.next
-    #                   frontend/public
-    #               retention-days: 7 # Days for artifact to be retained
+                  name: frontend
+                  path: frontend
+                  retention-days: 7 # Days for artifact to be retained
 
     # Storing-previous-image-with-new-tag:
     #     needs: Next-build
@@ -70,8 +68,7 @@ jobs:
             - name: Download next build # Download the above uploaded artifact
               uses: actions/download-artifact@v2
               with:
-                  name: build
-                  path: frontend
+                  name: frontend
             - run: ls -a -R
 
             # - name: Set up QEMU
