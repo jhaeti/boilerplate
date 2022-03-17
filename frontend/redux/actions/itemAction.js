@@ -8,8 +8,8 @@ export const DELETE_ITEM = "DELETE_ITEM";
 
 const apiUrl =
     process.env.NODE_ENV === "production"
-        ? process.env.API_URL
-        : process.env.API_DEV_URL;
+        ? process.env.NEXT_PUBLIC_API_URL
+        : process.env.NEXT_PUBLIC_API_DEV_URL;
 
 // Get all items in database
 export const getItems = () => (dispatch) => {

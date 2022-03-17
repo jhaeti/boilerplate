@@ -13,8 +13,9 @@ export const SET_MSG = "SET_MSG";
 // const apiUrl = process.env.API_URL;
 const apiUrl =
     process.env.NODE_ENV === "production"
-        ? process.env.API_URL
-        : process.env.API_DEV_URL;
+        ? process.env.NEXT_PUBLIC_API_URL
+        : process.env.NEXT_PUBLIC_API_DEV_URL;
+        
 
 // Attempt to login
 export const login = (user) => (dispatch) => {
