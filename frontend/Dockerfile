@@ -8,7 +8,7 @@ ENV NODE_ENV=production
 
 RUN npm install
 
-COPY .next .next
+COPY .next ./
 COPY public public
 
 RUN npm run build
