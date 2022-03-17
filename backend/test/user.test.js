@@ -51,7 +51,7 @@ test("Should not register a user if all fields are not provided", async () => {
     expect(response2.body).toBe("Please enter all fields");
 });
 
-test("Should fail to register a user if the user already exist", async () => {
+test("Should fail to register a user if the user already exist!", async () => {
     const response1 = await request(app)
         .post("/users/register")
         .send(userOne)
